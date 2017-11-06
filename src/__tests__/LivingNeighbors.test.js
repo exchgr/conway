@@ -1,13 +1,13 @@
 import LivingNeighbors from '../LivingNeighbors'
 
 describe('LivingNeighbors', () => {
-  it('counts living neighbors', () => {
+  it('counts living neighbors with wraparound', () => {
     const board = [
       [true, true, false],
       [true, false, true],
       [false, false, true]
     ]
 
-    expect(LivingNeighbors(board, 1, 0)).toEqual(2)
+    expect(LivingNeighbors(board, 1, 0)).toEqual(4)
   })
 })
