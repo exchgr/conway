@@ -1,4 +1,4 @@
-import CellShouldLive from './CellShouldLive'
+import CellShouldLive from '../CellShouldLive'
 
 describe('CellShouldLive', () => {
   describe('true cell', () => {

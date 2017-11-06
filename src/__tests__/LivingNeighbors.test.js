@@ -1,4 +1,4 @@
-import LivingNeighbors from './LivingNeighbors'
+import LivingNeighbors from '../LivingNeighbors'
 
 describe('LivingNeighbors', () => {
   it('counts living neighbors', () => {

@@ -1,4 +1,4 @@
-import BoardGenerator from "./BoardGenerator"
+import BoardGenerator from "../BoardGenerator"
 
 describe("BoardGenerator", () => {
   it("survives, kills, and reproduces", () => {
