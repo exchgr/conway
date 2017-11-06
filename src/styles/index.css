@@ -1,7 +1,16 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: -apple-system, Avenir, sans-serif;
+  text-align: center;
+}
+
+#root {
+  display: inline-block;
+}
+
+h1 {
+  margin: .3em;
 }
 
 .board {
