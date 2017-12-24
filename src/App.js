@@ -6,8 +6,8 @@ import BoardGenerator from './BoardGenerator';
 
 class App extends Component {
   initialState = () => ({
-    cells: Array(120).fill(0).map(() => (
-      Array(120).fill(
+    cells: Array(180).fill(0).map(() => (
+      Array(180).fill(
         false
       )
     ))
@@ -29,11 +29,22 @@ class App extends Component {
     this.setState({cells: cells})
   }
 
-  generateNextBoard = () => { this.setState({cells: BoardGenerator(this.state.cells)}) }
-  play = () => { this.setState({playFunction: setInterval(this.generateNextBoard, 250)}) }
+  generateNextBoard = (callback) => {
+    this.setState({cells: BoardGenerator(this.state.cells)}, callback)
+  }
+
+  nextBoard = () => { this.generateNextBoard() }
+
+  playNextBoard = (timestamp) => { this.generateNextBoard(this.play) }
+
+  play = () => {
+    this.setState({
+      playFunction: window.requestAnimationFrame(this.playNextBoard)
+    })
+  }
 
   pause = () => {
-    clearInterval(this.state.playFunction)
+    window.cancelAnimationFrame(this.state.playFunction)
     this.setState({playFunction: null})
   }
 
@@ -55,7 +66,7 @@ class App extends Component {
   render() {
     return ([
       <div className="board">{this.renderCellRows()}</div>,
-      <button onClick={this.generateNextBoard}>Next</button>,
+      <button onClick={this.nextBoard}>Next</button>,
       this.playPauseButton(),
       <button onClick={this.reset}>Reset</button>
     ]);
